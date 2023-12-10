@@ -1,0 +1,12 @@
+{
+  "name": "InstanceToRojo-Exporter",
+  "tree": {
+    "$className": "DataModel",
+    "InstanceToRojo-Exporter" : {
+        "$path" : "./src/main.client.lua",
+        "modules" : {
+            "$path" : "./src/modules"
+        }
+    }
+  }
+}
