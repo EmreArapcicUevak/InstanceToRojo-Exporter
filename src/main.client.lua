@@ -1,26 +1,23 @@
-local ChangeHistoryService = game:GetService("ChangeHistoryService")
 local Selection = game:GetService("Selection")
+local modules = script:WaitForChild("modules")
 
--- Create a new toolbar section titled "Custom Script Tools"
-local toolbar = plugin:CreateToolbar("Custom Script Tools")
+local generateStructure = require(modules:WaitForChild("GenerateStructure"))
+
+-- Create a new toolbar section titled "Instance To Rojo"
+local toolbar = plugin:CreateToolbar("Instance To Rojo")
 
 -- Add a toolbar button named "Create Empty Script"
-local newScriptButton = toolbar:CreateButton("Create Empty Script", "Create an empty script", "rbxassetid://14978048121")
+local convertInstanceButton = toolbar:CreateButton("Convert Instance Button", "Convert your selected roblox instance in an rojo project file!", "rbxassetid://14978048121")
 
 -- Make button clickable even if 3D viewport is hidden
-newScriptButton.ClickableWhenViewportHidden = true
+convertInstanceButton.ClickableWhenViewportHidden = true
 
-local function onNewScriptButtonClicked()
+local function onButtonClicked()
 	local selectedObjects = Selection:Get()
-	local parent = game:GetService("ServerScriptService")
-	if #selectedObjects > 0 then
-		parent = selectedObjects[1]
+	
+	for _, instance : Instance in pairs(selectedObjects) do
+		print(generateStructure(instance))
 	end
-
-	local newScript = Instance.new("Script")
-	newScript.Source = ""
-	newScript.Parent = parent
-	ChangeHistoryService:SetWaypoint("Added new empty script")
 end
 
-newScriptButton.Click:Connect(onNewScriptButtonClicked)
+convertInstanceButton.Click:Connect(onButtonClicked)
