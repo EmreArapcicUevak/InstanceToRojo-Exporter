@@ -7,6 +7,9 @@
             "Classes" : {
                 "$path" : "../external-code/GenerateStructure/Dependencies/CLasses"
             }
+        },
+        "AddObjectTags" : {
+            "$path" : "../external-code/GenerateStructure/Dependencies/AddObjectTags.lua"
         }
     }
 }

@@ -1,5 +1,6 @@
 --!strict
 local propertyHandlers = require(script:WaitForChild("PropertyHandlers"))
+local addObjectTags = require(script:WaitForChild("AddObjectTags"))
 
 local function generateChildStruct(child : Instance)
     if propertyHandlers[child.ClassName] == nil then
@@ -8,9 +9,11 @@ local function generateChildStruct(child : Instance)
     end
 
     local dataForChild = propertyHandlers[child.ClassName](nil, child)    
+    addObjectTags(dataForChild, child)
 
     for index : number, grandChild: Instance in pairs(child:GetChildren()) do
-        dataForChild[string.format("%d-%s", index, grandChild.Name)] = generateChildStruct(grandChild)
+        local key = string.format("%d-%s", index, grandChild.Name)
+        dataForChild[key] = generateChildStruct(grandChild)
     end
 
     return dataForChild
@@ -24,6 +27,8 @@ return function (object : Instance)
     end
 
     local structure = propertyHandlers[object.ClassName](nil, object)
+    addObjectTags(structure, object)
+
     structure["tree"] = {
         ["$className"] = "DataModel"
     }
