@@ -9,8 +9,8 @@ local function generateChildStruct(child : Instance)
 
     local dataForChild = propertyHandlers[child.ClassName](nil, child)    
 
-    for _, grandChild: Instance in pairs(child:GetChildren()) do
-        dataForChild[grandChild.Name] = generateChildStruct(grandChild)
+    for index : number, grandChild: Instance in pairs(child:GetChildren()) do
+        dataForChild[string.format("%d-%s", index, grandChild.Name)] = generateChildStruct(grandChild)
     end
 
     return dataForChild
@@ -28,8 +28,8 @@ return function (object : Instance)
         ["$className"] = "DataModel"
     }
 
-    for _, child: Instance in pairs(object:GetChildren()) do
-        structure["tree"][child.Name] = generateChildStruct(child)
+    for index : number, child: Instance in pairs(object:GetChildren()) do
+        structure["tree"][string.format("%d-%s", index, child.Name)] = generateChildStruct(child)
     end
 
     return structure
