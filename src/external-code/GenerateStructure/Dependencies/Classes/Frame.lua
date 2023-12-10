@@ -1,4 +1,3 @@
-
 local GuiObjectHandler = require(script.Parent:WaitForChild("GuiObject"))
 
 return function (data, instance : Frame)
