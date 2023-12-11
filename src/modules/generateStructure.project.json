@@ -1,0 +1,15 @@
+{
+    "name": "GenerateStructure",
+    "tree": {
+        "$path" : "../external-code/GenerateStructure/GenerateStructure.lua",
+        "PropertyHandlers" : {
+            "$path" : "../external-code/GenerateStructure/Dependencies/PropertyHandlers.lua",
+            "Classes" : {
+                "$path" : "../external-code/GenerateStructure/Dependencies/CLasses"
+            }
+        },
+        "AddObjectTags" : {
+            "$path" : "../external-code/GenerateStructure/Dependencies/AddObjectTags.lua"
+        }
+    }
+}
