@@ -26,12 +26,9 @@ return function (object : Instance)
         return nil
     end
 
-    local structure = propertyHandlers[object.ClassName](nil, object)
-    addObjectTags(structure, object)
-
-    structure["tree"] = {
-        ["$className"] = "DataModel"
-    }
+    local structure = {["name"] = object.Name}
+    structure["tree"] = propertyHandlers[object.ClassName](nil, object)
+    addObjectTags(structure["tree"], object)
 
     for index : number, child: Instance in pairs(object:GetChildren()) do
         structure["tree"][string.format("%d-%s", index, child.Name)] = generateChildStruct(child)

@@ -1,0 +1,9 @@
+{
+    "name": "SerializeTable",
+    "tree": {
+        "$path" : "../external-code/Serialization/SerializeTable.lua",
+        "Dependencies" : {
+            "$path" : "../external-code/Serialization/Dependencies"
+        }
+    }
+}
