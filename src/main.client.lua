@@ -2,6 +2,7 @@ local Selection = game:GetService("Selection")
 local modules = script:WaitForChild("modules")
 
 local generateStructure = require(modules:WaitForChild("GenerateStructure"))
+local serialize = require(modules:WaitForChild("SerializeTable"))
 
 -- Create a new toolbar section titled "Instance To Rojo"
 local toolbar = plugin:CreateToolbar("Instance To Rojo")
@@ -16,7 +17,9 @@ local function onButtonClicked()
 	local selectedObjects = Selection:Get()
 	
 	for _, instance : Instance in pairs(selectedObjects) do
-		print(generateStructure(instance))
+		local propertyTable = generateStructure(instance)
+		print(propertyTable)
+		print(serialize(propertyTable))
 	end
 end
 
