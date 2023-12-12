@@ -17,9 +17,8 @@ local function onButtonClicked()
 	local selectedObjects = Selection:Get()
 	
 	for _, instance : Instance in pairs(selectedObjects) do
-		local propertyTable = generateStructure(instance)
-		print(propertyTable)
-		print(serialize(propertyTable))
+		local RojoJsonString = serialize(generateStructure(instance))
+		print(string.format("----BEGIN PROJECT JSON GENERATION----\n%s\n----END PROJECT JSON GENERATION----", RojoJsonString))
 	end
 end
 

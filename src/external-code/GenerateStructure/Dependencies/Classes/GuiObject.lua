@@ -8,6 +8,7 @@ return function (data, instance : GuiObject)
     data["$properties"]["AutomaticSize"] = instance.AutomaticSize
     data["$properties"]["BackgroundColor3"] = instance.BackgroundColor3
     data["$properties"]["BorderColor3"] = instance.BorderColor3
+    data["$properties"]["BackgroundTransparency"] = instance.BackgroundTransparency
     data["$properties"]["BorderMode"] = instance.BorderMode
     data["$properties"]["BorderSizePixel"] = instance.BorderSizePixel
     data["$properties"]["ClipsDescendants"] = instance.ClipsDescendants
